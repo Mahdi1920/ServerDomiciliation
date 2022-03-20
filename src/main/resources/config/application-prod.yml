@@ -32,14 +32,27 @@ spring:
     livereload:
       enabled: false
   datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    dataSourceClassName: oracle.jdbc.pool.OracleDataSource
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:oracle:thin:@localhost:1521:xe
-    username: system
-    password: oracle
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    #username: system
+    #password: oracle
+
+    #username: c##scr
+    #password: scr
+
+    username: c##sec
+    password: sec
     hikari:
       poolName: Hikari
       auto-commit: false
+
   jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    database: ORACLE
+
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: prod
