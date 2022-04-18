@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="infoz.domi_domiciliation_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>infoz.domi.domain.Role</class>
+    <class>infoz.domi.domain.RoleOperation</class>
+    <class>infoz.domi.domain.ProduitService</class>
+    <class>infoz.domi.domain.Employe</class>
+    <class>infoz.domi.domain.ProduitService_1</class>
+    <class>infoz.domi.domain.Role_1</class>
+    <class>infoz.domi.domain.EmployeOperation</class>
+    <class>infoz.domi.domain.Operation</class>
+    <class>infoz.domi.domain.EmployeRole</class>
+    <class>infoz.domi.domain.Employe_1</class>
+    <class>infoz.domi.domain.EmployeOperation_1</class>
+    <class>infoz.domi.domain.EmployeRole_1</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+      <property name="javax.persistence.jdbc.user" value="system"/>
+      <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+      <property name="javax.persistence.jdbc.password" value="oracle"/>
+    </properties>
+  </persistence-unit>
+</persistence>

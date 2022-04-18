@@ -5,8 +5,25 @@
  */
 package infoz.domi.service;
 
+import infoz.domi.domain.ProduitService;
+import infoz.domi.repository.ProduitServiceRepository;
+import java.util.List;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author Mahdi
  */
-public class ProduitServiceService {}
+@Service
+public class ProduitServiceService {
+
+    private final ProduitServiceRepository prodrep;
+
+    public ProduitServiceService(ProduitServiceRepository prodrep) {
+        this.prodrep = prodrep;
+    }
+
+    public List<ProduitService> getProduits() {
+        return prodrep.findprod();
+    }
+}

@@ -9,12 +9,17 @@ import infoz.domi.domain.ProduitService;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Mahdi
  */
-public interface ProduitServiceRepository extends JpaRepository<ProduitService, Integer> {
-    @Query("select LIBELLE_PRODUIT_SERVICE from ProduitService ps where ps.CODE_PRODUIT_SERVICE = ?200")
-    ProduitService findprod(Integer CODE_PRODUIT_SERVICE);
+
+@Repository
+public interface ProduitServiceRepository extends JpaRepository<ProduitService, Number> {
+    @Query(value = "select * from PRODUIT_SERVICE", nativeQuery = true)
+    List<ProduitService> findprod();
+    //List<ProduitService> findAll() ;
 }

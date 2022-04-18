@@ -8,7 +8,9 @@ package infoz.domi.web.rest;
 import infoz.domi.domain.ProduitService;
 import infoz.domi.repository.ProduitServiceRepository;
 import infoz.domi.security.AuthoritiesConstants;
+import infoz.domi.service.ProduitServiceService;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,18 +22,22 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api")
+//@CrossOrigin("*")
 public class ProduitServiceResource {
 
     private ProduitServiceRepository prodrep;
 
-    /*@GetMapping("/getprods")
+    //ProduitServiceService prodserv;
+
+    @GetMapping("/produits")
     @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\")")
-    public List<ProduitService> getProds(){
+    public List<ProduitService> getProduits() {
         return prodrep.findAll();
-    }*/
-    @GetMapping("/getprods")
+    }
+
+    @GetMapping("/prods")
     @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\")")
-    public ProduitService getProds() {
-        return prodrep.findprod(200);
+    public List<ProduitService> getProds() {
+        return prodrep.findprod();
     }
 }

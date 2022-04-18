@@ -1,10 +1,12 @@
 package infoz.domi;
 
 import infoz.domi.config.ApplicationProperties;
+import infoz.domi.repository.ProduitServiceRepository;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
@@ -24,7 +26,7 @@ public class DomiciliationApp {
 
     private static final Logger log = LoggerFactory.getLogger(DomiciliationApp.class);
 
-    private final Environment env;
+    private Environment env;
 
     public DomiciliationApp(Environment env) {
         this.env = env;
@@ -67,6 +69,7 @@ public class DomiciliationApp {
         SpringApplication app = new SpringApplication(DomiciliationApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
+
         logApplicationStartup(env);
     }
 

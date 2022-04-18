@@ -5,192 +5,169 @@
  */
 package infoz.domi.domain;
 
-import java.util.Objects;
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Mahdi
  */
 @Entity
-@Table(name = "produitservice")
-public class ProduitService {
+@Table(name = "PRODUIT_SERVICE")
+public class ProduitService implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
-    private Integer CODE_PRODUIT_SERVICE;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CODE_PRODUIT_SERVICE")
+    private Number codeProduitService;
 
-    private String LIBELLE_PRODUIT_SERVICE;
-    private String PRODUIT_SERVICE;
-    private String TYPE_DOSSIER;
-    private String USER_SCHEMA;
-    private String PASSWORD_SCHEMA;
-    private String REPORT_SERVER;
-    private String GROUP_PRODUIT;
-    private String LIB_GROUP;
+    @Size(max = 50)
+    @Column(name = "LIBELLE_PRODUIT_SERVICE")
+    private String libelleProduitService;
+
+    @Size(max = 1)
+    @Column(name = "PRODUIT_SERVICE")
+    private String produitService;
+
+    @Size(max = 4)
+    @Column(name = "TYPE_DOSSIER")
+    private String typeDossier;
+
+    @Size(max = 20)
+    @Column(name = "USER_SCHEMA")
+    private String userSchema;
+
+    @Size(max = 25)
+    @Column(name = "PASSWORD_SCHEMA")
+    private String passwordSchema;
+
+    @Size(max = 30)
+    @Column(name = "REPORT_SERVER")
+    private String reportServer;
+
+    @Size(max = 2)
+    @Column(name = "GROUP_PRODUIT")
+    private String groupProduit;
+
+    @Size(max = 20)
+    @Column(name = "LIB_GROUP")
+    private String libGroup;
 
     public ProduitService() {}
 
-    public ProduitService(
-        int CODE_PRODUIT_SERVICE,
-        String LIBELLE_PRODUIT_SERVICE,
-        String PRODUIT_SERVICE,
-        String TYPE_DOSSIER,
-        String USER_SCHEMA,
-        String PASSWORD_SCHEMA,
-        String REPORT_SERVER,
-        String GROUP_PRODUIT,
-        String LIB_GROUP
-    ) {
-        this.CODE_PRODUIT_SERVICE = CODE_PRODUIT_SERVICE;
-        this.LIBELLE_PRODUIT_SERVICE = LIBELLE_PRODUIT_SERVICE;
-        this.PRODUIT_SERVICE = PRODUIT_SERVICE;
-        this.TYPE_DOSSIER = TYPE_DOSSIER;
-        this.USER_SCHEMA = USER_SCHEMA;
-        this.PASSWORD_SCHEMA = PASSWORD_SCHEMA;
-        this.REPORT_SERVER = REPORT_SERVER;
-        this.GROUP_PRODUIT = GROUP_PRODUIT;
-        this.LIB_GROUP = LIB_GROUP;
+    public ProduitService(Number codeProduitService) {
+        this.codeProduitService = codeProduitService;
     }
 
-    public int getCODE_PRODUIT_SERVICE() {
-        return CODE_PRODUIT_SERVICE;
+    public Number getCodeProduitService() {
+        return codeProduitService;
     }
 
-    public void setCODE_PRODUIT_SERVICE(int CODE_PRODUIT_SERVICE) {
-        this.CODE_PRODUIT_SERVICE = CODE_PRODUIT_SERVICE;
+    public void setCodeProduitService(Number codeProduitService) {
+        this.codeProduitService = codeProduitService;
     }
 
-    public String getLIBELLE_PRODUIT_SERVICE() {
-        return LIBELLE_PRODUIT_SERVICE;
+    public String getLibelleProduitService() {
+        return libelleProduitService;
     }
 
-    public void setLIBELLE_PRODUIT_SERVICE(String LIBELLE_PRODUIT_SERVICE) {
-        this.LIBELLE_PRODUIT_SERVICE = LIBELLE_PRODUIT_SERVICE;
+    public void setLibelleProduitService(String libelleProduitService) {
+        this.libelleProduitService = libelleProduitService;
     }
 
-    public String getPRODUIT_SERVICE() {
-        return PRODUIT_SERVICE;
+    public String getProduitService() {
+        return produitService;
     }
 
-    public void setPRODUIT_SERVICE(String PRODUIT_SERVICE) {
-        this.PRODUIT_SERVICE = PRODUIT_SERVICE;
+    public void setProduitService(String produitService) {
+        this.produitService = produitService;
     }
 
-    public String getTYPE_DOSSIER() {
-        return TYPE_DOSSIER;
+    public String getTypeDossier() {
+        return typeDossier;
     }
 
-    public void setTYPE_DOSSIER(String TYPE_DOSSIER) {
-        this.TYPE_DOSSIER = TYPE_DOSSIER;
+    public void setTypeDossier(String typeDossier) {
+        this.typeDossier = typeDossier;
     }
 
-    public String getUSER_SCHEMA() {
-        return USER_SCHEMA;
+    public String getUserSchema() {
+        return userSchema;
     }
 
-    public void setUSER_SCHEMA(String USER_SCHEMA) {
-        this.USER_SCHEMA = USER_SCHEMA;
+    public void setUserSchema(String userSchema) {
+        this.userSchema = userSchema;
     }
 
-    public String getPASSWORD_SCHEMA() {
-        return PASSWORD_SCHEMA;
+    public String getPasswordSchema() {
+        return passwordSchema;
     }
 
-    public void setPASSWORD_SCHEMA(String PASSWORD_SCHEMA) {
-        this.PASSWORD_SCHEMA = PASSWORD_SCHEMA;
+    public void setPasswordSchema(String passwordSchema) {
+        this.passwordSchema = passwordSchema;
     }
 
-    public String getREPORT_SERVER() {
-        return REPORT_SERVER;
+    public String getReportServer() {
+        return reportServer;
     }
 
-    public void setREPORT_SERVER(String REPORT_SERVER) {
-        this.REPORT_SERVER = REPORT_SERVER;
+    public void setReportServer(String reportServer) {
+        this.reportServer = reportServer;
     }
 
-    public String getGROUP_PRODUIT() {
-        return GROUP_PRODUIT;
+    public String getGroupProduit() {
+        return groupProduit;
     }
 
-    public void setGROUP_PRODUIT(String GROUP_PRODUIT) {
-        this.GROUP_PRODUIT = GROUP_PRODUIT;
+    public void setGroupProduit(String groupProduit) {
+        this.groupProduit = groupProduit;
     }
 
-    public String getLIB_GROUP() {
-        return LIB_GROUP;
+    public String getLibGroup() {
+        return libGroup;
     }
 
-    public void setLIB_GROUP(String LIB_GROUP) {
-        this.LIB_GROUP = LIB_GROUP;
+    public void setLibGroup(String libGroup) {
+        this.libGroup = libGroup;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (codeProduitService != null ? codeProduitService.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof ProduitService)) {
+            return false;
+        }
+        ProduitService other = (ProduitService) object;
+        if (
+            (this.codeProduitService == null && other.codeProduitService != null) ||
+            (this.codeProduitService != null && !this.codeProduitService.equals(other.codeProduitService))
+        ) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return (
-            "ProduitService{" +
-            "CODE_PRODUIT_SERVICE=" +
-            CODE_PRODUIT_SERVICE +
-            ", LIBELLE_PRODUIT_SERVICE=" +
-            LIBELLE_PRODUIT_SERVICE +
-            ", PRODUIT_SERVICE=" +
-            PRODUIT_SERVICE +
-            ", TYPE_DOSSIER=" +
-            TYPE_DOSSIER +
-            ", USER_SCHEMA=" +
-            USER_SCHEMA +
-            ", PASSWORD_SCHEMA=" +
-            PASSWORD_SCHEMA +
-            ", REPORT_SERVER=" +
-            REPORT_SERVER +
-            ", GROUP_PRODUIT=" +
-            GROUP_PRODUIT +
-            ", LIB_GROUP=" +
-            LIB_GROUP +
-            '}'
-        );
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ProduitService other = (ProduitService) obj;
-        if (this.CODE_PRODUIT_SERVICE != other.CODE_PRODUIT_SERVICE) {
-            return false;
-        }
-        if (!Objects.equals(this.LIBELLE_PRODUIT_SERVICE, other.LIBELLE_PRODUIT_SERVICE)) {
-            return false;
-        }
-        if (!Objects.equals(this.PRODUIT_SERVICE, other.PRODUIT_SERVICE)) {
-            return false;
-        }
-        if (!Objects.equals(this.TYPE_DOSSIER, other.TYPE_DOSSIER)) {
-            return false;
-        }
-        if (!Objects.equals(this.USER_SCHEMA, other.USER_SCHEMA)) {
-            return false;
-        }
-        if (!Objects.equals(this.PASSWORD_SCHEMA, other.PASSWORD_SCHEMA)) {
-            return false;
-        }
-        if (!Objects.equals(this.REPORT_SERVER, other.REPORT_SERVER)) {
-            return false;
-        }
-        if (!Objects.equals(this.GROUP_PRODUIT, other.GROUP_PRODUIT)) {
-            return false;
-        }
-        if (!Objects.equals(this.LIB_GROUP, other.LIB_GROUP)) {
-            return false;
-        }
-        return true;
+        return "infoz.domi.domain.ProduitService[ codeProduitService=" + codeProduitService + " ]";
     }
 }

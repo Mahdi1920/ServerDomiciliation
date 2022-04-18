@@ -35,6 +35,23 @@ spring:
     dataSourceClassName: oracle.jdbc.pool.OracleDataSource
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: system
+    password: oracle
+
+    #username: c##scr
+    #password: scr
+
+    #username: c##sec
+    #password: sec
+
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  datasource1:
+    driverClassName: oracle.jdbc.OracleDriver
+    dataSourceClassName: oracle.jdbc.pool.OracleDataSource
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:oracle:thin:@localhost:1521:orcl
     #username: system
     #password: oracle
 
@@ -43,11 +60,9 @@ spring:
 
     username: c##sec
     password: sec
-
     hikari:
       poolName: Hikari
       auto-commit: false
-
   jpa:
     show-sql: true
     database-platform: org.hibernate.dialect.Oracle12cDialect
@@ -97,10 +112,10 @@ jhipster:
   # CORS is only enabled by default with the "dev" profile
   cors:
     # Allow Ionic for JHipster by default (* no longer allowed in Spring Boot 2.4+)
-    allowed-origins: '*'
+    allowed-origins: 'http://localhost:8080,https://localhost:8080,http://localhost:9000,https://localhost:9000'
     allowed-methods: '*'
     allowed-headers: '*'
-    exposed-headers: 'Authorization,Link,X-Total-Count'
+    exposed-headers: 'Authorization,Link,X-Total-Count,X-${jhipster.clientApp.name}-alert,X-${jhipster.clientApp.name}-error,X-${jhipster.clientApp.name}-params'
     allow-credentials: true
     max-age: 1800
   security:

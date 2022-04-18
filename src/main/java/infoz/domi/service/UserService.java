@@ -276,6 +276,10 @@ public class UserService {
         return userRepository.findAll(pageable).map(AdminUserDTO::new);
     }
 
+    /*@Transactional(readOnly = true)
+    public User getAllManagedUser(String firstname) {
+        return userRepository.Verif(firstname);
+    }*/
     @Transactional(readOnly = true)
     public Page<UserDTO> getAllPublicUsers(Pageable pageable) {
         return userRepository.findAllByIdNotNullAndActivatedIsTrue(pageable).map(UserDTO::new);
@@ -322,4 +326,7 @@ public class UserService {
             Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).evict(user.getEmail());
         }
     }
+    /*private User getUser(){
+        return userRepository.Verif("Administrator");
+    }*/
 }
