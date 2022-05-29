@@ -25,15 +25,14 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * @author Mahdi
  */
 @Entity
-@Table(name = "PRODUIT_SERVICE")
+@Table(name = "PRODUITSERVICE")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class ProduitService implements Serializable {
+public class ProduitService1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
-    @NotNull
+    @SequenceGenerator(name = "sequenceGenerator")    @NotNull
     @Column(name = "CODE_PRODUIT_SERVICE")
     private Integer codeProduitService;
     @Size(max = 50)
@@ -61,7 +60,6 @@ public class ProduitService implements Serializable {
     @Column(name = "LIB_GROUP")
     private String libGroup;
 
-    
     public Integer getCodeProduitService() {
         return codeProduitService;
     }
@@ -144,10 +142,10 @@ public class ProduitService implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ProduitService)) {
+        if (!(object instanceof ProduitService1)) {
             return false;
         }
-        ProduitService other = (ProduitService) object;
+        ProduitService1 other = (ProduitService1) object;
         if ((this.codeProduitService == null && other.codeProduitService != null) || (this.codeProduitService != null && !this.codeProduitService.equals(other.codeProduitService))) {
             return false;
         }
@@ -156,7 +154,9 @@ public class ProduitService implements Serializable {
 
     @Override
     public String toString() {
-        return "ProduitService{" + "codeProduitService=" + codeProduitService + ", libelleProduitService=" + libelleProduitService + ", produitService=" + produitService + ", typeDossier=" + typeDossier + ", userSchema=" + userSchema + ", passwordSchema=" + passwordSchema + ", reportServer=" + reportServer + ", groupProduit=" + groupProduit + ", libGroup=" + libGroup + '}';
+        return "ProduitService1{" + "codeProduitService=" + codeProduitService + ", libelleProduitService=" + libelleProduitService + ", produitService=" + produitService + ", typeDossier=" + typeDossier + ", userSchema=" + userSchema + ", passwordSchema=" + passwordSchema + ", reportServer=" + reportServer + ", groupProduit=" + groupProduit + ", libGroup=" + libGroup + '}';
     }
+
+    
     
 }

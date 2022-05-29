@@ -18,42 +18,40 @@ import javax.validation.constraints.NotNull;
 @Embeddable
 public class EmployeOperationPK implements Serializable {
 
-    @Basic(optional = false)
     @NotNull
     @Column(name = "CODE_PRODUIT_SERVICE")
-    private Long codeProduitService;
-
+    private int codeProduitService;
     @Basic(optional = false)
     @NotNull
     @Column(name = "CODE_OPERATION")
-    private Long codeOperation;
-
+    private int codeOperation;
     @Basic(optional = false)
     @NotNull
     @Column(name = "MAT_EMP")
     private int matEmp;
 
-    public EmployeOperationPK() {}
+    public EmployeOperationPK() {
+    }
 
-    public EmployeOperationPK(Long codeProduitService, Long codeOperation, int matEmp) {
+    public EmployeOperationPK(int codeProduitService, int codeOperation, int matEmp) {
         this.codeProduitService = codeProduitService;
         this.codeOperation = codeOperation;
         this.matEmp = matEmp;
     }
 
-    public Long getCodeProduitService() {
+    public int getCodeProduitService() {
         return codeProduitService;
     }
 
-    public void setCodeProduitService(Long codeProduitService) {
+    public void setCodeProduitService(int codeProduitService) {
         this.codeProduitService = codeProduitService;
     }
 
-    public Long getCodeOperation() {
+    public int getCodeOperation() {
         return codeOperation;
     }
 
-    public void setCodeOperation(Long codeOperation) {
+    public void setCodeOperation(int codeOperation) {
         this.codeOperation = codeOperation;
     }
 
@@ -65,7 +63,7 @@ public class EmployeOperationPK implements Serializable {
         this.matEmp = matEmp;
     }
 
-    /* @Override
+    @Override
     public int hashCode() {
         int hash = 0;
         hash += (int) codeProduitService;
@@ -73,7 +71,7 @@ public class EmployeOperationPK implements Serializable {
         hash += (int) matEmp;
         return hash;
     }
-*/
+
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -95,14 +93,7 @@ public class EmployeOperationPK implements Serializable {
 
     @Override
     public String toString() {
-        return (
-            "infoz.domi.domain.EmployeOperationPK[ codeProduitService=" +
-            codeProduitService +
-            ", codeOperation=" +
-            codeOperation +
-            ", matEmp=" +
-            matEmp +
-            " ]"
-        );
+        return "infoz.domi.domain.EmployeOperationPK[ codeProduitService=" + codeProduitService + ", codeOperation=" + codeOperation + ", matEmp=" + matEmp + " ]";
     }
+    
 }

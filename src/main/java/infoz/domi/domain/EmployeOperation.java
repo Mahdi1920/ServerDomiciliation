@@ -21,48 +21,36 @@ import javax.persistence.Table;
  * @author Mahdi
  */
 @Entity
-@Table(name = "EMPLOYE_OPERATION")
-@NamedQueries({ @NamedQuery(name = "EmployeOperation.findAll", query = "SELECT e FROM EmployeOperation e") })
+@Table(name = "EMPLOYEOPERATION")
+@NamedQueries({
+    @NamedQuery(name = "EmployeOperation.findAll", query = "SELECT e FROM EmployeOperation e")})
 public class EmployeOperation implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @EmbeddedId
     protected EmployeOperationPK employeOperationPK;
-
     @Column(name = "CREATION")
-    private Long creation;
-
+    private Short creation;
     @Column(name = "MODIFICATION")
-    private Long modification;
-
+    private Short modification;
     @Column(name = "SUPPRESSION")
-    private Long suppression;
-
+    private Short suppression;
     @Column(name = "CONSULTATION")
-    private Long consultation;
-
-    @JoinColumns(
-        {
-            @JoinColumn(
-                name = "CODE_PRODUIT_SERVICE",
-                referencedColumnName = "CODE_PRODUIT_SERVICE",
-                insertable = false,
-                updatable = false
-            ),
-            @JoinColumn(name = "CODE_OPERATION", referencedColumnName = "CODE_OPERATION", insertable = false, updatable = false),
-        }
-    )
+    private Short consultation;
+    @JoinColumns({
+        @JoinColumn(name = "CODE_PRODUIT_SERVICE", referencedColumnName = "CODE_PRODUIT_SERVICE", insertable = false, updatable = false),
+        @JoinColumn(name = "CODE_OPERATION", referencedColumnName = "CODE_OPERATION", insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private Operation operation;
 
-    public EmployeOperation() {}
+    public EmployeOperation() {
+    }
 
     public EmployeOperation(EmployeOperationPK employeOperationPK) {
         this.employeOperationPK = employeOperationPK;
     }
 
-    public EmployeOperation(Long codeProduitService, Long codeOperation, int matEmp) {
+    public EmployeOperation(short codeProduitService, short codeOperation, int matEmp) {
         this.employeOperationPK = new EmployeOperationPK(codeProduitService, codeOperation, matEmp);
     }
 
@@ -74,35 +62,35 @@ public class EmployeOperation implements Serializable {
         this.employeOperationPK = employeOperationPK;
     }
 
-    public Long getCreation() {
+    public Short getCreation() {
         return creation;
     }
 
-    public void setCreation(Long creation) {
+    public void setCreation(Short creation) {
         this.creation = creation;
     }
 
-    public Long getModification() {
+    public Short getModification() {
         return modification;
     }
 
-    public void setModification(Long modification) {
+    public void setModification(Short modification) {
         this.modification = modification;
     }
 
-    public Long getSuppression() {
+    public Short getSuppression() {
         return suppression;
     }
 
-    public void setSuppression(Long suppression) {
+    public void setSuppression(Short suppression) {
         this.suppression = suppression;
     }
 
-    public Long getConsultation() {
+    public Short getConsultation() {
         return consultation;
     }
 
-    public void setConsultation(Long consultation) {
+    public void setConsultation(Short consultation) {
         this.consultation = consultation;
     }
 
@@ -128,10 +116,7 @@ public class EmployeOperation implements Serializable {
             return false;
         }
         EmployeOperation other = (EmployeOperation) object;
-        if (
-            (this.employeOperationPK == null && other.employeOperationPK != null) ||
-            (this.employeOperationPK != null && !this.employeOperationPK.equals(other.employeOperationPK))
-        ) {
+        if ((this.employeOperationPK == null && other.employeOperationPK != null) || (this.employeOperationPK != null && !this.employeOperationPK.equals(other.employeOperationPK))) {
             return false;
         }
         return true;
@@ -141,4 +126,5 @@ public class EmployeOperation implements Serializable {
     public String toString() {
         return "infoz.domi.domain.EmployeOperation[ employeOperationPK=" + employeOperationPK + " ]";
     }
+    
 }

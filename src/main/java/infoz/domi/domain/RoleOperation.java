@@ -21,37 +21,33 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ROLE_OPERATION")
-@NamedQueries({ @NamedQuery(name = "RoleOperation.findAll", query = "SELECT r FROM RoleOperation r") })
+@NamedQueries({
+    @NamedQuery(name = "RoleOperation.findAll", query = "SELECT r FROM RoleOperation r")})
 public class RoleOperation implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @EmbeddedId
     protected RoleOperationPK roleOperationPK;
-
     @Column(name = "CREATION")
-    private Long creation;
-
+    private Short creation;
     @Column(name = "MODIFICATION")
-    private Long modification;
-
+    private Short modification;
     @Column(name = "SUPPRESSION")
-    private Long suppression;
-
+    private Short suppression;
     @Column(name = "CONSULTATION")
-    private Long consultation;
-
+    private Short consultation;
     @JoinColumn(name = "CODE_ROLE", referencedColumnName = "CODE_ROLE", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Role role;
 
-    public RoleOperation() {}
+    public RoleOperation() {
+    }
 
     public RoleOperation(RoleOperationPK roleOperationPK) {
         this.roleOperationPK = roleOperationPK;
     }
 
-    public RoleOperation(int codeRole, Long codeProduitService, Long codeOperation) {
+    public RoleOperation(int codeRole, short codeProduitService, short codeOperation) {
         this.roleOperationPK = new RoleOperationPK(codeRole, codeProduitService, codeOperation);
     }
 
@@ -63,35 +59,35 @@ public class RoleOperation implements Serializable {
         this.roleOperationPK = roleOperationPK;
     }
 
-    public Long getCreation() {
+    public Short getCreation() {
         return creation;
     }
 
-    public void setCreation(Long creation) {
+    public void setCreation(Short creation) {
         this.creation = creation;
     }
 
-    public Long getModification() {
+    public Short getModification() {
         return modification;
     }
 
-    public void setModification(Long modification) {
+    public void setModification(Short modification) {
         this.modification = modification;
     }
 
-    public Long getSuppression() {
+    public Short getSuppression() {
         return suppression;
     }
 
-    public void setSuppression(Long suppression) {
+    public void setSuppression(Short suppression) {
         this.suppression = suppression;
     }
 
-    public Long getConsultation() {
+    public Short getConsultation() {
         return consultation;
     }
 
-    public void setConsultation(Long consultation) {
+    public void setConsultation(Short consultation) {
         this.consultation = consultation;
     }
 
@@ -117,10 +113,7 @@ public class RoleOperation implements Serializable {
             return false;
         }
         RoleOperation other = (RoleOperation) object;
-        if (
-            (this.roleOperationPK == null && other.roleOperationPK != null) ||
-            (this.roleOperationPK != null && !this.roleOperationPK.equals(other.roleOperationPK))
-        ) {
+        if ((this.roleOperationPK == null && other.roleOperationPK != null) || (this.roleOperationPK != null && !this.roleOperationPK.equals(other.roleOperationPK))) {
             return false;
         }
         return true;
@@ -130,4 +123,5 @@ public class RoleOperation implements Serializable {
     public String toString() {
         return "infoz.domi.domain.RoleOperation[ roleOperationPK=" + roleOperationPK + " ]";
     }
+    
 }

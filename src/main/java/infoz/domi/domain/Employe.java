@@ -6,72 +6,65 @@
 package infoz.domi.domain;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Basic;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 /**
  *
  * @author Mahdi
  */
 @Entity
 @Table(name = "EMPLOYE")
-@NamedQueries({ @NamedQuery(name = "Employe.findAll", query = "SELECT e FROM Employe e") })
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Employe implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @Id
-    @Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
     @NotNull
     @Column(name = "CODE_EMPLOYE")
     private Integer codeEmploye;
-
     @Size(max = 50)
     @Column(name = "NOM_EMPLOYE")
     private String nomEmploye;
-
     @Size(max = 50)
     @Column(name = "PRENOM_EMPLOYE")
     private String prenomEmploye;
-
     @Size(max = 13)
     @Column(name = "MOT_PASSE")
     private String motPasse;
-
     @Size(max = 1)
     @Column(name = "DROIT_DE_VALIDATION")
     private String droitDeValidation;
-
     @Size(max = 50)
     @Column(name = "ADRESSE_MAIL")
     private String adresseMail;
-
     @Size(max = 1)
     @Column(name = "ENVOI_O_N")
     private String envoiON;
-
     @Size(max = 1)
     @Column(name = "ACTIF_O_N")
     private String actifON;
-
     @Size(max = 2)
     @Column(name = "AGENCE_SIEGE")
     private String agenceSiege;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employe")
-    private Collection<EmployeRole> employeRoleCollection;
+    private List<EmployeRole> employeRoleList;
 
-    public Employe() {}
+    public Employe() {
+    }
 
     public Employe(Integer codeEmploye) {
         this.codeEmploye = codeEmploye;
@@ -149,13 +142,13 @@ public class Employe implements Serializable {
         this.agenceSiege = agenceSiege;
     }
 
-    public Collection<EmployeRole> getEmployeRoleCollection() {
-        return employeRoleCollection;
+    /*public List<EmployeRole> getEmployeRoleList() {
+        return employeRoleList;
     }
 
-    public void setEmployeRoleCollection(Collection<EmployeRole> employeRoleCollection) {
-        this.employeRoleCollection = employeRoleCollection;
-    }
+    public void setEmployeRoleList(List<EmployeRole> employeRoleList) {
+        this.employeRoleList = employeRoleList;
+    }*/
 
     @Override
     public int hashCode() {
@@ -171,10 +164,7 @@ public class Employe implements Serializable {
             return false;
         }
         Employe other = (Employe) object;
-        if (
-            (this.codeEmploye == null && other.codeEmploye != null) ||
-            (this.codeEmploye != null && !this.codeEmploye.equals(other.codeEmploye))
-        ) {
+        if ((this.codeEmploye == null && other.codeEmploye != null) || (this.codeEmploye != null && !this.codeEmploye.equals(other.codeEmploye))) {
             return false;
         }
         return true;
@@ -182,6 +172,9 @@ public class Employe implements Serializable {
 
     @Override
     public String toString() {
-        return "infoz.domi.domain.Employe[ codeEmploye=" + codeEmploye + " ]";
+        return "Employe{" + "codeEmploye=" + codeEmploye + ", nomEmploye=" + nomEmploye + ", prenomEmploye=" + prenomEmploye + ", motPasse=" + motPasse + ", droitDeValidation=" + droitDeValidation + ", adresseMail=" + adresseMail + ", envoiON=" + envoiON + ", actifON=" + actifON + ", agenceSiege=" + agenceSiege + /*", employeRoleList=" + employeRoleList + */ '}';
     }
+
+    
+    
 }

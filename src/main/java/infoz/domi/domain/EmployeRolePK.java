@@ -22,13 +22,13 @@ public class EmployeRolePK implements Serializable {
     @NotNull
     @Column(name = "MAT_EMP")
     private int matEmp;
-
     @Basic(optional = false)
     @NotNull
     @Column(name = "CODE_ROLE")
     private int codeRole;
 
-    public EmployeRolePK() {}
+    public EmployeRolePK() {
+    }
 
     public EmployeRolePK(int matEmp, int codeRole) {
         this.matEmp = matEmp;
@@ -79,4 +79,5 @@ public class EmployeRolePK implements Serializable {
     public String toString() {
         return "infoz.domi.domain.EmployeRolePK[ matEmp=" + matEmp + ", codeRole=" + codeRole + " ]";
     }
+    
 }

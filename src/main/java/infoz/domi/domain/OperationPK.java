@@ -18,47 +18,45 @@ import javax.validation.constraints.NotNull;
 @Embeddable
 public class OperationPK implements Serializable {
 
-    @Basic(optional = false)
     @NotNull
     @Column(name = "CODE_PRODUIT_SERVICE")
-    private Long codeProduitService;
-
-    @Basic(optional = false)
+    private int codeProduitService;
     @NotNull
     @Column(name = "CODE_OPERATION")
-    private Long codeOperation;
+    private int codeOperation;
 
-    public OperationPK() {}
+    public OperationPK() {
+    }
 
-    public OperationPK(Long codeProduitService, Long codeOperation) {
+    public OperationPK(int codeProduitService, int codeOperation) {
         this.codeProduitService = codeProduitService;
         this.codeOperation = codeOperation;
     }
 
-    public Long getCodeProduitService() {
+    public int getCodeProduitService() {
         return codeProduitService;
     }
 
-    public void setCodeProduitService(Long codeProduitService) {
+    public void setCodeProduitService(int codeProduitService) {
         this.codeProduitService = codeProduitService;
     }
 
-    public Long getCodeOperation() {
+    public int getCodeOperation() {
         return codeOperation;
     }
 
-    public void setCodeOperation(Long codeOperation) {
+    public void setCodeOperation(int codeOperation) {
         this.codeOperation = codeOperation;
     }
 
-    /* @Override
+    @Override
     public int hashCode() {
         int hash = 0;
         hash += (int) codeProduitService;
         hash += (int) codeOperation;
         return hash;
     }
-*/
+
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -79,4 +77,5 @@ public class OperationPK implements Serializable {
     public String toString() {
         return "infoz.domi.domain.OperationPK[ codeProduitService=" + codeProduitService + ", codeOperation=" + codeOperation + " ]";
     }
+    
 }

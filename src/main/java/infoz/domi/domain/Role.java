@@ -6,7 +6,7 @@
 package infoz.domi.domain;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,28 +25,23 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "ROLE")
-@NamedQueries({ @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r") })
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @Id
-    @Basic(optional = false)
     @NotNull
     @Column(name = "CODE_ROLE")
     private Integer codeRole;
-
     @Size(max = 100)
     @Column(name = "LIB_ROLE")
     private String libRole;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "role")
-    private Collection<RoleOperation> roleOperationCollection;
-
+    private List<RoleOperation> roleOperationList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "role")
-    private Collection<EmployeRole> employeRoleCollection;
+    private List<EmployeRole> employeRoleList;
 
-    public Role() {}
+    public Role() {
+    }
 
     public Role(Integer codeRole) {
         this.codeRole = codeRole;
@@ -68,20 +63,20 @@ public class Role implements Serializable {
         this.libRole = libRole;
     }
 
-    public Collection<RoleOperation> getRoleOperationCollection() {
-        return roleOperationCollection;
+    public List<RoleOperation> getRoleOperationList() {
+        return roleOperationList;
     }
 
-    public void setRoleOperationCollection(Collection<RoleOperation> roleOperationCollection) {
-        this.roleOperationCollection = roleOperationCollection;
+    public void setRoleOperationList(List<RoleOperation> roleOperationList) {
+        this.roleOperationList = roleOperationList;
     }
 
-    public Collection<EmployeRole> getEmployeRoleCollection() {
-        return employeRoleCollection;
+    public List<EmployeRole> getEmployeRoleList() {
+        return employeRoleList;
     }
 
-    public void setEmployeRoleCollection(Collection<EmployeRole> employeRoleCollection) {
-        this.employeRoleCollection = employeRoleCollection;
+    public void setEmployeRoleList(List<EmployeRole> employeRoleList) {
+        this.employeRoleList = employeRoleList;
     }
 
     @Override
@@ -108,4 +103,5 @@ public class Role implements Serializable {
     public String toString() {
         return "infoz.domi.domain.Role[ codeRole=" + codeRole + " ]";
     }
+    
 }

@@ -31,23 +31,26 @@ spring:
       enabled: false
     livereload:
       enabled: false
+#  datasource:
+#    driverClassName: oracle.jdbc.OracleDriver
+#    dataSourceClassName: oracle.jdbc.pool.OracleDataSource
+#    type: com.zaxxer.hikari.HikariDataSource
+#    url: jdbc:oracle:thin:@localhost:1521:orcl
+##    username: system
+##    password: oracle
+#
+#    #username: c##scr
+#    #password: scr
+#    
+#    username: C##REF
+#    password: ref
+#    
+#    username: c##sec
+#    password: sec
+#    hikari:
+#      poolName: Hikari
+#      auto-commit: false
   datasource:
-    driverClassName: oracle.jdbc.OracleDriver
-    dataSourceClassName: oracle.jdbc.pool.OracleDataSource
-    type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:oracle:thin:@localhost:1521:orcl
-    username: system
-    password: oracle
-
-    #username: c##scr
-    #password: scr
-
-    #username: c##sec
-    #password: sec
-    hikari:
-      poolName: Hikari
-      auto-commit: false
-  datasource1:
     driverClassName: oracle.jdbc.OracleDriver
     dataSourceClassName: oracle.jdbc.pool.OracleDataSource
     type: com.zaxxer.hikari.HikariDataSource
@@ -58,8 +61,10 @@ spring:
     #username: c##scr
     #password: scr
 
-    username: c##sec
-    password: sec
+    #username: c##securite
+    #password: securite
+    username: C##REF
+    password: ref
     hikari:
       poolName: Hikari
       auto-commit: false

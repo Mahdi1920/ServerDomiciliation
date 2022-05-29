@@ -7,13 +7,11 @@ package infoz.domi.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -26,59 +24,45 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "OPERATION")
-@NamedQueries({ @NamedQuery(name = "Operation.findAll", query = "SELECT o FROM Operation o") })
 public class Operation implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @EmbeddedId
     protected OperationPK operationPK;
-
     @Size(max = 50)
     @Column(name = "LIBELLE_OPERATION")
     private String libelleOperation;
-
     @Size(max = 15)
     @Column(name = "ABREVIATION")
     private String abreviation;
-
     @Size(max = 50)
     @Column(name = "SOUS_MENU")
     private String sousMenu;
-
     @Size(max = 1)
     @Column(name = "PARAMETRER")
     private String parametrer;
-
     @Column(name = "CODE_OPR_AGENCE")
-    private Long codeOprAgence;
-
+    private Short codeOprAgence;
     @Size(max = 1)
     @Column(name = "VISA_O_N")
     private String visaON;
-
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "MAX_VALID_MEME_EMP")
     private BigDecimal maxValidMemeEmp;
-
     @Size(max = 1)
     @Column(name = "DECHARGE_O_N")
     private String dechargeON;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "operation")
-    private Collection<EmployeOperation> employeOperationCollection;
+    private List<EmployeOperation> employeoperationList;
 
-    @JoinColumn(name = "CODE_PRODUIT_SERVICE", referencedColumnName = "CODE_PRODUIT_SERVICE", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private ProduitService produitService;
-
-    public Operation() {}
+    public Operation() {
+    }
 
     public Operation(OperationPK operationPK) {
         this.operationPK = operationPK;
     }
 
-    public Operation(Long codeProduitService, Long codeOperation) {
+    public Operation(short codeProduitService, short codeOperation) {
         this.operationPK = new OperationPK(codeProduitService, codeOperation);
     }
 
@@ -122,11 +106,11 @@ public class Operation implements Serializable {
         this.parametrer = parametrer;
     }
 
-    public Long getCodeOprAgence() {
+    public Short getCodeOprAgence() {
         return codeOprAgence;
     }
 
-    public void setCodeOprAgence(Long codeOprAgence) {
+    public void setCodeOprAgence(Short codeOprAgence) {
         this.codeOprAgence = codeOprAgence;
     }
 
@@ -154,20 +138,12 @@ public class Operation implements Serializable {
         this.dechargeON = dechargeON;
     }
 
-    public Collection<EmployeOperation> getEmployeOperationCollection() {
-        return employeOperationCollection;
+    public List<EmployeOperation> getEmployeoperationList() {
+        return employeoperationList;
     }
 
-    public void setEmployeOperationCollection(Collection<EmployeOperation> employeOperationCollection) {
-        this.employeOperationCollection = employeOperationCollection;
-    }
-
-    public ProduitService getProduitService() {
-        return produitService;
-    }
-
-    public void setProduitService(ProduitService produitService) {
-        this.produitService = produitService;
+    public void setEmployeoperationList(List<EmployeOperation> employeoperationList) {
+        this.employeoperationList = employeoperationList;
     }
 
     @Override
@@ -184,10 +160,7 @@ public class Operation implements Serializable {
             return false;
         }
         Operation other = (Operation) object;
-        if (
-            (this.operationPK == null && other.operationPK != null) ||
-            (this.operationPK != null && !this.operationPK.equals(other.operationPK))
-        ) {
+        if ((this.operationPK == null && other.operationPK != null) || (this.operationPK != null && !this.operationPK.equals(other.operationPK))) {
             return false;
         }
         return true;
@@ -197,4 +170,5 @@ public class Operation implements Serializable {
     public String toString() {
         return "infoz.domi.domain.Operation[ operationPK=" + operationPK + " ]";
     }
+    
 }

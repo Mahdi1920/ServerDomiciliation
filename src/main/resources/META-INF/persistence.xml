@@ -14,6 +14,23 @@
     <class>infoz.domi.domain.Employe_1</class>
     <class>infoz.domi.domain.EmployeOperation_1</class>
     <class>infoz.domi.domain.EmployeRole_1</class>
+    <class>infoz.domi.domain.ProduitService1</class>
+    <class>infoz.domi.domain.Produitservice1</class>
+    <class>infoz.domi.domain.Operation_1</class>
+    <class>infoz.domi.domain.Produitservice_1</class>
+    <class>infoz.domi.domain.Banque</class>
+    <class>infoz.domi.domain.DonneesGenerales</class>
+    <class>infoz.domi.domain.Agence</class>
+    <class>infoz.domi.domain.Titre</class>
+    <class>infoz.domi.domain.ModeDeReglement</class>
+    <class>infoz.domi.domain.Devise</class>
+    <class>infoz.domi.domain.ModeDeLivraison</class>
+    <class>infoz.domi.domain.Titre_1</class>
+    <class>infoz.domi.domain.Unite</class>
+    <class>infoz.domi.domain.Pays</class>
+    <class>infoz.domi.domain.DelaisReglement</class>
+    <class>infoz.domi.domain.RegimeStat</class>
+    <class>infoz.domi.domain.DepotDomiciliationTitre</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
       <property name="javax.persistence.jdbc.user" value="system"/>

@@ -22,20 +22,19 @@ public class RoleOperationPK implements Serializable {
     @NotNull
     @Column(name = "CODE_ROLE")
     private int codeRole;
-
     @Basic(optional = false)
     @NotNull
     @Column(name = "CODE_PRODUIT_SERVICE")
-    private Long codeProduitService;
-
+    private int codeProduitService;
     @Basic(optional = false)
     @NotNull
     @Column(name = "CODE_OPERATION")
-    private Long codeOperation;
+    private int codeOperation;
 
-    public RoleOperationPK() {}
+    public RoleOperationPK() {
+    }
 
-    public RoleOperationPK(int codeRole, Long codeProduitService, Long codeOperation) {
+    public RoleOperationPK(int codeRole, int codeProduitService, int codeOperation) {
         this.codeRole = codeRole;
         this.codeProduitService = codeProduitService;
         this.codeOperation = codeOperation;
@@ -49,30 +48,30 @@ public class RoleOperationPK implements Serializable {
         this.codeRole = codeRole;
     }
 
-    public Long getCodeProduitService() {
+    public int getCodeProduitService() {
         return codeProduitService;
     }
 
-    public void setCodeProduitService(Long codeProduitService) {
+    public void setCodeProduitService(int codeProduitService) {
         this.codeProduitService = codeProduitService;
     }
 
-    public Long getCodeOperation() {
+    public int getCodeOperation() {
         return codeOperation;
     }
 
-    public void setCodeOperation(Long codeOperation) {
+    public void setCodeOperation(int codeOperation) {
         this.codeOperation = codeOperation;
     }
 
-    /*@Override
+    @Override
     public int hashCode() {
         int hash = 0;
         hash += (int) codeRole;
         hash += (int) codeProduitService;
         hash += (int) codeOperation;
         return hash;
-    }*/
+    }
 
     @Override
     public boolean equals(Object object) {
@@ -95,14 +94,7 @@ public class RoleOperationPK implements Serializable {
 
     @Override
     public String toString() {
-        return (
-            "infoz.domi.domain.RoleOperationPK[ codeRole=" +
-            codeRole +
-            ", codeProduitService=" +
-            codeProduitService +
-            ", codeOperation=" +
-            codeOperation +
-            " ]"
-        );
+        return "infoz.domi.domain.RoleOperationPK[ codeRole=" + codeRole + ", codeProduitService=" + codeProduitService + ", codeOperation=" + codeOperation + " ]";
     }
+    
 }
